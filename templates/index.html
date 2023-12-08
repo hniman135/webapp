@@ -8,6 +8,7 @@
 			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 			  crossorigin="anonymous"></script>
 	<script type="text/javascript" src="../static/index.js"></script>
+  
 </head>
 <body>
 
@@ -28,5 +29,46 @@
 	</header>
 </div>
 
+<div class="table-container">
+  <table>
+      <thead>
+          <tr>
+              <th>Header 1</th>
+              <th>Thong tin Container</th>
+              <th>Header 3</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>ID</td>
+              <td id ="ID"></td>
+              <td>Row 1, Cell 3</td>
+          </tr>
+          <tr>
+              <td>Date</td>
+              <td id ="time"></td>
+              <td>Row 2, Cell 3</td>
+          </tr>
+          <tr>
+              <td>PASS</td>
+              <td>YES</td>
+              <td>Row 3, Cell 3</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+<script>
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var data = JSON.parse(this.responseText);
+        document.getElementById("ID").innerHTML = data.ID;
+        document.getElementById("time").innerHTML = data.time;
+      }
+  };
+  xhttp.open("GET", "/get_doc_content", true);
+  xhttp.send();
+</script>
 </body>
 </html>
